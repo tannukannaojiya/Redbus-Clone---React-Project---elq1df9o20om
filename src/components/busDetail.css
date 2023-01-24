@@ -1,0 +1,13 @@
+
+.bus-list{
+    width: 100%;
+    height:auto;
+    background-color:rgb(215, 45, 45) ;
+
+}
+.bus-data{
+    display: flex;
+    justify-content: space-evenly;
+    background-color:#d9d9d9 ;
+    margin:20px;
+}
