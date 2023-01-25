@@ -1,50 +1,71 @@
-import React, {useState} from 'react'
-import '../styles/App.css';
-import Navbar from "../components/Navbar";
-import Form from "../components/Form";
-// import BusDetail from './BusDetail';
+import React, { useState } from "react";
+import "../styles/App.css";
+import Swap from "./Swap";
+import Source from "./Source";
+import Destination from "./Destination";
+import { Date } from "./Date";
+import SearchBus from "./SearchBus";
+import Nav from "./Nav";
+import { Image } from "./Image";
+import { BusDetails } from "./BusDetails";
+import { BusCard } from "./BusCard";
+import { Booked } from "./Booked";
+import { Routes, Route } from "react-router-dom";
 
-
-
-  const App = () => {
-    const [response1, setResponse1] = useState([]);
-  
-    async function busData(data) {
-      
-      try {
-        const url = `https://content.newtonschool.co/v1/pr/63b70222af4f30335b4b3b9a/buses?source=${data.source}&destination=${data.destination}&date=${data.date}`;
-        const api = await fetch(url);
-        const response = await api.json(); // [{},{},{},{}]
-        if (response[0].id) {
-          setResponse1(response);
-          
-        }
-      } catch (err) {
-        console.log(err);
-       
-      }
-    }
-  
-    //handling form data
-    function handleSubmit(e) {
-      e.preventDefault();
-      const form = e.target;
-      const formData = new FormData(form);
-      console.log("1", formData);
-      const formJson = Object.fromEntries(formData.entries());
-      busData(formJson);
-      console.log(formJson);
-    }
+const App = () => {
+  const [message, setMessage] = useState("");
+  const [toMessage, setToMessage] = useState("");
+  const [select, setSelect] = useState("");
+  const [data, setData] = useState([]);
+  const [data2, setData2] = useState([]);
+  const [filter, setFilter] = useState([]);
+  const [show, setShow] = useState({});
 
   return (
-  <div id="main">
-      <Navbar/> 
-      <Form handle={handleSubmit} data={response1}/> 
-    
-  </div>
-  
- )
-}
+    <div id="main">
+      <Nav />
 
+      <div id="main-duplicate">
+        <Source message={message} setMessage={setMessage} />
+        <Swap
+          source={message}
+          destination={toMessage}
+          setSource={setMessage}
+          setToSource={setToMessage}
+        />
+        <Destination toMessage={toMessage} setToMessage={setToMessage} />
+        <Date select={select} setSelect={setSelect} />
+        <SearchBus
+          from={message}
+          to={toMessage}
+          date={select}
+          data={data}
+          data2={data2}
+          filter={filter}
+          setData={setData}
+          setData2={setData2}
+          setFilter={setFilter}
+        />
+      </div>
+      <Routes>
+        <Route path="/" element={<Image />} />
+        <Route
+          path="BusDetails"
+          element={
+            <BusDetails
+              filter={filter}
+              setShow={setShow}
+              data={data}
+              data2={data2}
+            />
+          }
+        />
+
+        <Route path="BusDetails/BusCard" element={<BusCard show={show} />} />
+        <Route path="BusDetails/BusCard/Booked" element={<Booked />} />
+      </Routes>
+    </div>
+  );
+};
 
 export default App;
