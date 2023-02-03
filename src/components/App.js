@@ -11,7 +11,9 @@ import { BusDetails } from "./BusDetails";
 import { BusCard } from "./BusCard";
 import { Booked } from "./Booked";
 import { Routes, Route } from "react-router-dom";
-
+ import Login from "./Login";
+ import SignIn from "./SignIn";
+ 
 const App = () => {
   const [message, setMessage] = useState("");
   const [toMessage, setToMessage] = useState("");
@@ -22,9 +24,11 @@ const App = () => {
   const [show, setShow] = useState({});
 
   return (
+    <div>
+
     <div id="main">
       <Nav />
-
+     
       <div id="main-duplicate">
         <Source message={message} setMessage={setMessage} />
         <Swap
@@ -63,7 +67,12 @@ const App = () => {
 
         <Route path="BusDetails/BusCard" element={<BusCard show={show} />} />
         <Route path="BusDetails/BusCard/Booked" element={<Booked />} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/signIn" element={<SignIn/>} />
       </Routes>
+      
+    </div>
+    {/* <Login/> */}
     </div>
   );
 };

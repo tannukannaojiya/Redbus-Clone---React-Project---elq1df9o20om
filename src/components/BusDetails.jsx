@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const BusDetails = ({ filter, data, data2, setShow }) => {
   const navigate = useNavigate();
+  const [result, setResult]=useState(filter);
+  const [isLoading, setIsLoading]=useState(false);
+  function sortByName (){
+    setIsLoading(true);
+    console.log(filter);
+   // filter[1].busName="abc";
+    filter.sort((a,b)=>{
+      return a.busName < b.busName ? 1 :-1;
+    })
+    setIsLoading(false);
+  }
+  
+  
   return (
     <div id="bus-details">
       <div id="sortby">
@@ -11,22 +24,22 @@ export const BusDetails = ({ filter, data, data2, setShow }) => {
         </div>
         <div id="details-of-sorting">
           <div id="schedule">
-            <h3>Name</h3>
+            <button className="sort-btn" onClick={sortByName}>Name</button>
           </div>
           <div id="schedule">
-            <h3>Departure</h3>
+            <button className="sort-btn">Departure</button>
           </div>
           <div id="schedule">
-            <h3>Arrival</h3>
+            <button className="sort-btn">Arrival</button>
           </div>
           <div id="schedule">
-            <h3>Price</h3>
+            <button className="sort-btn">Price</button>
           </div>
         </div>
       </div>
 
       <div id="bus-layer">
-        {filter &&
+        {!isLoading&&filter &&
           filter.map((user, index) => (
             <div
               id="bus-list"

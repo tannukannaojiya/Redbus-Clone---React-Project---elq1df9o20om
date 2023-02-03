@@ -11,12 +11,15 @@ export default function Destination(props) {
       <br />
       <input
         type="text"
-        id="destination"
+        id="destination" className="dropdown"
         onChange={handleChange}
         value={props.toMessage}
         placeholder="Enter Destination"
         // defaultValue={"bhubaneswar"}
       />
+      <div className="dropdown-content">
+        <p>delhi</p>
+      </div>
     </div>
   );
 }

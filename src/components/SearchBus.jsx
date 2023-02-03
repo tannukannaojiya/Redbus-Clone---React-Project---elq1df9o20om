@@ -15,7 +15,7 @@ export default function SearchBus({
 }) {
   const navigate = useNavigate();
   const handleClick = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     fetchDate(from, to);
     navigate("BusDetails");
   };

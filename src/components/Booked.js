@@ -33,6 +33,7 @@ export const Booked = () => {
       <div className="backbtn">
         <button onClick={() => nav("/")}>Back to home</button>
       </div>
+      
     </div>
   );
 };

@@ -15,7 +15,7 @@ export const BusCard = ({ show }) => {
   const handleClick = (e) => {
     if (!seatArr.includes(e.target.id)) {
       seatArr.push(e.target.id);
-      document.getElementById(e.target.id).style.backgroundColor = "red";
+      document.getElementById(e.target.id).style.backgroundColor = "green";
     } else {
       seatArr.pop(e.target.id);
       document.getElementById(e.target.id).style.backgroundColor =
@@ -48,12 +48,12 @@ export const BusCard = ({ show }) => {
               </div>
               <div id="bus-list-schedule">
                 <h3>
-                  Departure Time <br /> {show.departureTime}
+                  Departure Time <br/> {show.departureTime}
                 </h3>
               </div>
               <div id="bus-list-schedule">
                 <h3>
-                  Arrival Time <br /> {show.arrivalTime}
+                  Arrival Time <br/> {show.arrivalTime}
                 </h3>
               </div>
               <div id="bus-list-schedule">
@@ -61,7 +61,7 @@ export const BusCard = ({ show }) => {
               </div>
               <div id="bus-list-schedule">
                 <h3>
-                  Price <br /> {show.ticketPrice}
+                  Price <br/> {show.ticketPrice}
                 </h3>
               </div>
             </div>

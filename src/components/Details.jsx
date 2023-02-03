@@ -10,6 +10,7 @@ export default function Details() {
       <div id="png">
         <img src="symbole-de-bus-rouge.png" alt="" />
       </div>
+      
     </div>
   );
 }

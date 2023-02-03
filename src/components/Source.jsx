@@ -11,12 +11,15 @@ export default function Source(props) {
       <br />
       <input
         type="text"
-        id="source"
+        id="source" className="dropdown"
         onChange={handleChange}
         value={props.message}
         placeholder="Enter Source"
         // defaultValue={"kolkata"}
       />
+      <div className="dropdown-content">
+        <p>jaipur</p>
+      </div>
     </div>
   );
 }
