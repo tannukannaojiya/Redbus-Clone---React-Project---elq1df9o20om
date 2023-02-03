@@ -1,3 +1,8 @@
+View- https://https://scintillating-melba-d7f021.netlify.app
+
+
+
+
 # boilerplate-react-functional-public
 
 In this app we will be making a Word and Character counter app.
