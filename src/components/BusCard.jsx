@@ -31,9 +31,11 @@ export const BusCard = ({ show }) => {
       localStorage.setItem("seatNum", seatArr.length);
       navigate("Booked");
     } else {
-      document.querySelector(".msg").style.display = "Block";
+      //document.querySelector(".msg").style.display = "Block";
       setTimeout(() => {
-        document.querySelector(".msg").style.display = "none";
+       // document.querySelector(".msg").style.display = "none";
+       localStorage.setItem("Seat not selected",0);
+       alert("Seat not selected");
       }, 2000);
     }
   };
